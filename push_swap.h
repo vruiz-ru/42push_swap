@@ -17,6 +17,8 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdio.h>
+#include <limits.h>
+# include <stdbool.h>
 
 typedef struct s_node {
     int value;
@@ -25,9 +27,18 @@ typedef struct s_node {
     struct s_node *prev;
 }               t_node;
 
-int	ft_atoi(const char *str);
+int     ft_atol(const char *str);
 size_t	ft_strlen(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len); 
 char	**ft_split(char const *s, char c);
+void	free_matrix(char **argv);
+void	free_stack(t_node **stack);
+void	error_free(t_node **a, char **argv, bool flag_argc_2);
+int	    error_syntax(char *str_nbr);
+int	    error_repetition(t_node *a, int nbr);
+void	append_node(t_node **stack, int nbr);
+t_node	*find_last_node(t_node *head);
+
+
 
 #endif

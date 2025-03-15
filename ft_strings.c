@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-int	ft_atoi(const char *str)
+int	ft_atol(const char *str)
 {
-	int	num;
+	long	num;
 	int	isneg;
 	int	i;
 
