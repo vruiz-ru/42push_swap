@@ -98,6 +98,8 @@ int main(int ac, char **av)
         printf("Value: %d\n", print->value);
         print = print->next;
     }
+
+    printf("Value: %d\n", print->value);
    /*
     if(!stack_sorted(a))
     {
