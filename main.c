@@ -47,6 +47,32 @@ void	append_node(t_node **stack, int nbr)
 	}
 }
 
+void create_index(t_node *head) {
+    t_node *pnt;
+	t_node	*cmp;
+    int count;
+    
+    pnt = head;
+    while (pnt) 
+	{
+        count = 0;
+        cmp = head;
+        
+        while (cmp) 
+		{
+            if (cmp->value < pnt->value)
+                count++; 
+            cmp = cmp->next;
+        }
+        
+        pnt->pos = count;
+        pnt = pnt->next;
+    }
+}
+
+
+
+
 void	stack_init(t_node **a, char **argv, bool flag_argc_2)
 {
 	long	nbr;
@@ -90,16 +116,29 @@ int main(int ac, char **av)
         printf("\"%s\"\n", av[i]);
         i++;
      }
+	 printf("\n");
     stack_init(&a, av + 1, ac == 2);//crear stack a
-   
+	create_index(a);
     print = a;
     while (print)
     {
-        printf("Value: %d\n", print->value);
+        printf("Value: %d // Pos:%d\n", print->value, print->pos);
+        print = print->next;
+    }
+	printf("\n");
+
+	radix_sort(&a);
+
+    // Mostrar pila ordenada
+    printf("\nSorted stack:\n");
+    print = a;
+    while (print != NULL) 
+	{
+        printf("%d\n", print->value);
         print = print->next;
     }
 
-    printf("Value: %d\n", print->value);
+
    /*
     if(!stack_sorted(a))
     {

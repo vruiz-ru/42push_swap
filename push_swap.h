@@ -38,7 +38,8 @@ int	    error_syntax(char *str_nbr);
 int	    error_repetition(t_node *a, int nbr);
 void	append_node(t_node **stack, int nbr);
 t_node	*find_last_node(t_node *head);
-
-
+void	pa(t_node **a, t_node **b, bool checker);
+void	pb(t_node **b, t_node **a, bool checker);
+void radix_sort(t_node **a);
 
 #endif
