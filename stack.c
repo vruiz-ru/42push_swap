@@ -12,6 +12,21 @@
 
 #include "push_swap.h"
 
+int	stack_len(t_node *stack)
+{
+	int	count;
+
+	if (NULL == stack)
+		return (0);
+	count = 0;
+	while (stack)
+	{
+		++count;
+		stack = stack->next;
+	}
+	return (count);
+}
+
 void	free_matrix(char **argv)
 {
 	int	i;

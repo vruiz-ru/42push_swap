@@ -109,7 +109,8 @@ int main(int ac, char **av)
     else if(ac == 2)
         av = ft_split(av[1], ' ');
     
-    int i;
+    /*
+        int i;
     i = 0;
     while (av[i])
     {
@@ -117,18 +118,21 @@ int main(int ac, char **av)
         i++;
      }
 	 printf("\n");
+    */    
     stack_init(&a, av + 1, ac == 2);//crear stack a
 	create_index(a);
-    print = a;
+    
+    
+      print = a;
     while (print)
     {
         printf("Value: %d // Pos:%d\n", print->value, print->pos);
         print = print->next;
     }
 	printf("\n");
-
+    
 	radix_sort(&a);
-
+    
     // Mostrar pila ordenada
     printf("\nSorted stack:\n");
     print = a;
@@ -138,8 +142,9 @@ int main(int ac, char **av)
         print = print->next;
     }
 
-
-   /*
+    /*
+    
+   
     if(!stack_sorted(a))
     {
         //radix

@@ -22,54 +22,64 @@ int top(t_node *stack)
 {
     if (stack == NULL) 
         return -1;
-    return stack->value;
+    return stack->pos;
 }
 
-void radix_sort(t_node **a) 
+
+void radix_sort(t_node **a)
 {
-    t_node *b = NULL;  // Pila b
+    t_node *b = NULL;
     int size = 0;
     t_node *temp = *a;
+
     // Calcular el tamaño de la pila 'a'
-    while (temp != NULL) 
+    while (temp)
     {
         size++;
         temp = temp->next;
     }
-    // Encontrar el valor máximo en la pila 'a'
+
+    // Encontrar el valor máximo en 'a'
     int max_num = 0;
     temp = *a;
-    while (temp != NULL) 
+    while (temp)
     {
-        if (temp->value > max_num) 
-            max_num = temp->value;
+        if (temp->pos > max_num)
+            max_num = temp->pos;
         temp = temp->next;
     }
 
-    // Calcular el número de bits necesarios para representar max_num
+    // Calcular el número de bits necesarios
     int max_bits = 0;
-    while ((max_num >> max_bits) != 0) 
+    while ((max_num >> max_bits) != 0)
         max_bits++;
 
-    // Recorrer cada bit
     int i = 0;
-    while (i < max_bits) 
+    while (i < max_bits)
     {
-        int j = 0;
-        while (j < size) 
+        int count = size;  // Controlar el número de elementos a procesar
+        int pushed = 0;    // Contador de elementos movidos a 'b'
+
+        while (count > 0)
         {
             int num = top(*a);
-            if ((num >> i) & 1) 
-                // Si el bit en la posición i es 1, dejarlo en 'a'
-                pa(a, &b, 0);  // ra() equivale a dejarlo en 'a'
-            else 
-                // Si el bit en la posición i es 0, moverlo a 'b'
-                pb(&b, a, 0);  // pb() equivale a mover de 'a' a 'b'
-            j++;
+            if ((num >> i) & 1)
+                ra(a, 0);  // ✅ Rotamos SOLO si el bit es 1
+            else
+            {
+                pb(&b, a, 0);  // ✅ Movemos a 'b' si el bit es 0
+                pushed++;
+            }
+            count--;
         }
-        // Mover los elementos de 'b' de vuelta a 'a' en el orden correcto
-        while (!is_empty(b)) 
-            pa(a, &b, 0);  // pa() equivale a mover de 'b' a 'a'
+
+        // Regresar elementos de 'b' a 'a'
+        while (pushed > 0)
+        {
+            pa(a, &b, 0);
+            pushed--;
+        }
+
         i++;
     }
 }
