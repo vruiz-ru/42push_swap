@@ -122,7 +122,7 @@ int main(int ac, char **av)
     stack_init(&a, av + 1, ac == 2);//crear stack a
 	create_index(a);
     
-    
+    /*
       print = a;
     while (print)
     {
@@ -130,9 +130,9 @@ int main(int ac, char **av)
         print = print->next;
     }
 	printf("\n");
-    
+    */
 	radix_sort(&a);
-    
+    /*
     // Mostrar pila ordenada
     printf("\nSorted stack:\n");
     print = a;
@@ -141,10 +141,8 @@ int main(int ac, char **av)
         printf("%d\n", print->value);
         print = print->next;
     }
-
-    /*
     
-   
+    /*
     if(!stack_sorted(a))
     {
         //radix
