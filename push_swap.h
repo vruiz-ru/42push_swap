@@ -41,7 +41,19 @@ t_node	*find_last_node(t_node *head);
 void	pa(t_node **a, t_node **b, bool checker);
 void	pb(t_node **b, t_node **a, bool checker);
 void	ra(t_node **a, bool checker);
-int	stack_len(t_node *stack);
-void radix_sort(t_node **a);
+void	rra(t_node **a, bool checker);
+void	rrb(t_node **b, bool checker);
+void	rrr(t_node **a, t_node **b, bool checker);
+void	ra(t_node **a, bool checker);
+void	rb(t_node **b, bool checker);
+void	rr(t_node **a, t_node **b, bool checker);
+void	sa(t_node	**a, bool checker);
+void	sb(t_node **b, bool checker);
+void	ss(t_node **a, t_node **b, bool checker);
+bool	is_sorted(t_node *stack);
+int	    stack_len(t_node *stack);
+//void    recursive_quick_sort(t_node **stack);
+void recursive_quick_sort(t_node **stack_a, t_node **stack_b);
+//void radix_sort(t_node **a);
 
 #endif

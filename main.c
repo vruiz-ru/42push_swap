@@ -70,7 +70,18 @@ void create_index(t_node *head) {
     }
 }
 
-
+bool	is_sorted(t_node *stack)
+{
+	if (NULL == stack)
+		return (1);
+	while (stack->next)
+	{
+		if (stack->value > stack->next->value)
+			return (false);
+		stack = stack->next;
+	}
+	return (true);
+}
 
 
 void	stack_init(t_node **a, char **argv, bool flag_argc_2)
@@ -131,7 +142,8 @@ int main(int ac, char **av)
     }
 	printf("\n");
     */
-	radix_sort(&a);
+	//radix_sort(&a);
+	recursive_quick_sort(&a, &b);
     /*
     // Mostrar pila ordenada
     printf("\nSorted stack:\n");
