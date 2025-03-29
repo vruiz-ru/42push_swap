@@ -53,7 +53,7 @@ void	ss(t_node **a, t_node **b, bool checker);
 bool	is_sorted(t_node *stack);
 int	    stack_len(t_node *stack);
 //void    recursive_quick_sort(t_node **stack);
-void recursive_quick_sort(t_node **stack_a, t_node **stack_b);
-//void radix_sort(t_node **a);
+//void recursive_quick_sort(t_node **stack_a, t_node **stack_b);
+void radix_sort(t_node **a);
 
 #endif

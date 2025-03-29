@@ -143,7 +143,7 @@ int main(int ac, char **av)
 	printf("\n");
     */
 	//radix_sort(&a);
-	recursive_quick_sort(&a, &b);
+	radix_sort(&a);
     /*
     // Mostrar pila ordenada
     printf("\nSorted stack:\n");
