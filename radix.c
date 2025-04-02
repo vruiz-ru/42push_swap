@@ -62,42 +62,63 @@ int top(t_node *stack)
     return stack->pos;
 }
 
-/*
+void print_stack2(t_node *stack, char name)
+{
+    printf("Stack %c: ", name);
+    while (stack)
+    {
+        printf("%d ", stack->pos);
+        stack = stack->next;
+    }
+    printf("\n");
+}
+
 void radix_sort(t_node **a)
 {
+    
+    t_node *b;
+    t_node *temp;
+    int  size;
+    int  max_num;
+    int max_bits;
+    int i;
+    int j;
+    int pushed;
+    int num;
+    
     if (is_sorted(*a))  // 🔥 Verifica si ya está ordenado
         return;
 
-    t_node *b = NULL;
-    int size = stack_len(*a);
-    int max_num = 0;
-    t_node *temp = *a;
+    b = NULL;
+    size = stack_len(*a);
+    max_num = 0;
+    temp = *a;
 
-    // ✅ Encontrar el valor absoluto máximo
+    // ✅ Encontrar el valor máximo
     while (temp)
     {
-        if (abs(temp->pos) > max_num)
-            max_num = abs(temp->pos);
+        if (temp->pos > max_num)
+            max_num = temp->pos;
         temp = temp->next;
     }
 
     // ✅ Calcular bits necesarios
-    int max_bits = 0;
+    max_bits = 0;
     while ((max_num >> max_bits) != 0)
         max_bits++;
 
-    int i = 0;
+    i = 0;
     while (i < max_bits)
     {
-        int pushed = 0;
-        int j = 0;
-        int size_copy = size;
-
+        pushed = 0;
+        j = 0;
+        printf("Iteration %d:\n", i);
+         print_stack2(*a, 'A');
+        print_stack2(b, 'B');
         // 🔄 No mover elementos ya ordenados en la parte inferior
-        while (j < size_copy)
+        while (j < size)
         {
-            int num = top(*a);
-            if ((num >> i) & 1)
+            if (((*a)->pos >> i) & 1)
                 ra(a, 0);  // Rotar si el bit es 1
             else
             {
@@ -107,145 +128,32 @@ void radix_sort(t_node **a)
             j++;
         }
 
-        // 🔄 No mover elementos ya ordenados en la parte superior de `b`
-        while (pushed > 0)
-        {
+         //🔄 No mover elementos ya ordenados en la parte superior de b
+         while (pushed > 0)
+         {
             pa(a, &b, 0);
             pushed--;
-        }
+         }
+       
+       
+
+        // 🔄 No mover elementos ya ordenados en la parte superior de `b`
+        /*while (pushed > 0)
+        {
+            if ((((b->pos >> (i + 1)) & 1) == 1)) // Si el siguiente bit es 1, mover a `a`
+                pa(a, &b, 0);
+            else
+                rb(&b, 0);  // Si el siguiente bit es 0, solo rotar dentro de `b`
+            
+            pushed--;
+        }*/
 
         i++;
     }
 
     // 🔥 Ajuste final con `rra` si es necesario
-    int min_pos = find_min(*a);
-    while ((*a)->pos != min_pos)
-        rra(a, 0);
+    //int min_pos = find_min(*a);
+    //while ((*a)->pos != min_pos)
+     //   rra(a, 0);
 }
-*/
-//option2
-/*
-void radix_sort(t_node **a)
-{
-    if (is_sorted(*a))  // Verifica si ya está ordenado
-        return;
 
-    t_node *b = NULL;
-    int size = stack_len(*a);
-    int max_num = 0;
-    t_node *temp = *a;
-
-    // Encontrar el valor absoluto máximo
-    while (temp)
-    {
-        if (abs(temp->pos) > max_num)
-            max_num = abs(temp->pos);
-        temp = temp->next;
-    }
-
-    // Calcular bits necesarios
-    int max_bits = 0;
-    while ((max_num >> max_bits) != 0)
-        max_bits++;
-
-    int i = 0;
-    while (i < max_bits)
-    {
-        int pushed = 0;
-        int j = 0;
-        int size_copy = size;
-
-        while (j < size_copy)
-        {
-            int num = top(*a);
-            if ((num >> i) & 1)
-                ra(a, 0);  // Rotar si el bit es 1
-            else
-            {
-                pb(&b, a, 0);  // Pasar a 'b' si el bit es 0
-                pushed++;
-            }
-            j++;
-        }
-
-        int pushed_b = pushed;
-        while (pushed_b > 0)
-        {
-            if (b && ((top(b) >> (i + 1)) & 1) == 0)  // Si el siguiente bit también es 0
-                rb(&b, 0);  // Mantener en B
-            else
-                pa(a, &b, 0);  // Devolver a A
-            pushed_b--;
-        }
-
-        i++;
-    }
-
-    // Ajuste final con `rra` si es necesario
-    int min_pos = find_min(*a);
-    while ((*a)->pos != min_pos)
-        rra(a, 0);
-}
-*/
-//option 3
-void radix_sort(t_node **a)
-{
-    if (is_sorted(*a))  // Verifica si ya está ordenado
-        return;
-
-    t_node *b = NULL;
-    int size = stack_len(*a);
-    int max_num = 0;
-    t_node *temp = *a;
-
-    // Encontrar el valor absoluto máximo
-    while (temp)
-    {
-        if (abs(temp->pos) > max_num)
-            max_num = abs(temp->pos);
-        temp = temp->next;
-    }
-
-    // Calcular bits necesarios
-    int max_bits = 0;
-    while ((max_num >> max_bits) != 0)
-        max_bits++;
-
-    int i = 0;
-    while (i < max_bits)
-    {
-        int pushed = 0;
-        int j = 0;
-        int size_copy = size;
-
-        while (j < size_copy)
-        {
-            int num = top(*a);
-            if ((num >> i) & 1)
-                ra(a, 0);  // Rotar si el bit es 1
-            else
-            {
-                pb(&b, a, 0);  // Pasar a 'b' si el bit es 0
-                pushed++;
-            }
-            j++;
-        }
-
-        int pushed_b = pushed;
-        while (pushed_b > 0)
-        {
-            if (b && ((top(b) >> (i + 1)) & 1) == 0)  // Si el siguiente bit también es 0
-                rb(&b, 0);  // Mantener en B
-            else
-                pa(a, &b, 0);  // Devolver a A
-            pushed_b--;
-        }
-
-        i++;
-    }
-
-    // Ajuste final con `rra` si es necesario
-    int min_pos = find_min(*a);
-    while ((*a)->pos != min_pos)
-        rra(a, 0);
-}
