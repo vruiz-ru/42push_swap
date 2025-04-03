@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: vruiz-ru <vruiz-ru@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 20:07:25 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2025/01/23 20:07:32 by vruiz-ru         ###   ########.fr       */
+/*   Updated: 2025/04/03 18:03:35 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,18 +70,7 @@ void create_index(t_node *head) {
     }
 }
 
-bool	is_sorted(t_node *stack)
-{
-	if (NULL == stack)
-		return (1);
-	while (stack->next)
-	{
-		if (stack->value > stack->next->value)
-			return (false);
-		stack = stack->next;
-	}
-	return (true);
-}
+
 
 
 void	stack_init(t_node **a, char **argv, bool flag_argc_2)
@@ -142,8 +131,8 @@ int main(int ac, char **av)
     }
 	printf("\n");
     */
-	//radix_sort(&a);
 	radix_sort(&a);
+	//quick_sort(&a, &b, stack_len(a));
     /*
     // Mostrar pila ordenada
     printf("\nSorted stack:\n");
@@ -154,7 +143,7 @@ int main(int ac, char **av)
         print = print->next;
     }
     
-    /*
+    
     if(!stack_sorted(a))
     {
         //radix

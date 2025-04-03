@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: vruiz-ru <vruiz-ru@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 17:56:52 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2025/03/16 17:56:56 by vruiz-ru         ###   ########.fr       */
+/*   Updated: 2025/04/03 18:54:42 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,44 +50,6 @@ void	pb(t_node **b, t_node **a, bool checker)
 		write(1, "pb\n", 3);
 }
 
-static void	reverse_rotate(t_node **stack)
-{
-	t_node	*last;
-	int				len;
-
-	len = stack_len(*stack);
-	if (NULL == *stack || NULL == stack || 1 == len)
-		return ;
-	last = find_last_node(*stack);
-	last->prev->next = NULL;
-	last->next = *stack;
-	last->prev = NULL;
-	*stack = last;
-	last->next->prev = last;
-}
-
-void	rra(t_node **a, bool checker)
-{
-	reverse_rotate(a);
-	if (!checker)
-		write(1, "rra\n", 4);
-}
-
-void	rrb(t_node **b, bool checker)
-{
-	reverse_rotate(b);
-	if (!checker)
-		write(1, "rrb\n", 4);
-}
-
-void	rrr(t_node **a, t_node **b, bool checker)
-{
-	reverse_rotate(a);
-	reverse_rotate(b);
-	if (!checker)
-		write(1, "rrr\n", 4);
-}
-
 static void	rotate(t_node **stack)
 {
 	t_node	*last_node;
@@ -110,7 +72,6 @@ void	ra(t_node **a, bool checker)
 	if (!checker)
 		write(1, "ra\n", 3);
 }
-
 void	rb(t_node **b, bool checker)
 {
 	rotate(b);
@@ -118,13 +79,6 @@ void	rb(t_node **b, bool checker)
 		write(1, "rb\n", 3);
 }
 
-void	rr(t_node **a, t_node **b, bool checker)
-{
-	rotate(a);
-	rotate(b);
-	if (!checker)
-		write(1, "rr\n", 3);
-}
 static void	swap(t_node **head)
 {
 	int	len;
@@ -161,4 +115,42 @@ void	ss(t_node **a, t_node **b, bool checker)
 	swap(b);
 	if (!checker)
 		write(1, "ss\n", 3);
+}
+
+static void	reverse_rotate(t_node **stack)
+{
+	t_node	*last;
+	int				len;
+
+	len = stack_len(*stack);
+	if (NULL == *stack || NULL == stack || 1 == len)
+		return ;
+	last = find_last_node(*stack);
+	last->prev->next = NULL;
+	last->next = *stack;
+	last->prev = NULL;
+	*stack = last;
+	last->next->prev = last;
+}
+
+void	rra(t_node **a, bool checker)
+{
+	reverse_rotate(a);
+	if (!checker)
+		write(1, "rra\n", 4);
+}
+
+void	rrb(t_node **b, bool checker)
+{
+	reverse_rotate(b);
+	if (!checker)
+		write(1, "rrb\n", 4);
+}
+
+void	rrr(t_node **a, t_node **b, bool checker)
+{
+	reverse_rotate(a);
+	reverse_rotate(b);
+	if (!checker)
+		write(1, "rrr\n", 4);
 }
