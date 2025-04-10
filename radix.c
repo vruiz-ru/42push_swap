@@ -83,61 +83,6 @@ int is_sorted(t_node *stack)
     }
     return (1);  // Está ordenado
 }
-/*
-void radix_sort(t_node **a)
-{
-    t_node *b = NULL;
-    t_node *temp;
-    int size, max_num, max_bits, i, j;
-
-    // Si ya está ordenado, salimos
-    if (is_sorted(*a))
-        return;
-
-    size = stack_len(*a);
-    max_num = 0;
-    temp = *a;
-
-    // Encontrar el valor máximo según pos
-    while (temp)
-    {
-        if (temp->pos > max_num)
-            max_num = temp->pos;
-        temp = temp->next;
-    }
-
-    // Calcular la cantidad de bits necesarios para representar el máximo
-    max_bits = 0;
-    while ((max_num >> max_bits) != 0)
-        max_bits++;
-
-    // Para cada bit (desde el menos significativo)
-    i = 0;
-    while (i < max_bits)
-    {
-        j = 0;
-		printf("\nIteration %d:\n", i);
-        print_stack2(*a, 'A');
-        print_stack2(b, 'B');
-        // Procesar todos los elementos de A
-        while (j < size)
-        {
-            // Si el bit i de la posición es 1, rota A; si es 0, pasa el nodo a B
-            if (((*a)->pos >> i) & 1)
-                ra(a, 0);
-            else
-                pb(&b, a, 0);
-            j++;
-        }
-        // Vaciar B: mover todos los elementos de vuelta a A
-        while (b)
-            pa(a, &b, 0);
-        i++;
-    }
-	  printf("\nFinal Result:\n");
-    print_stack2(*a, 'A');
-    print_stack2(b, 'B');
-}*/
 
 void radix_sort(t_node **a)
 {
@@ -168,9 +113,9 @@ void radix_sort(t_node **a)
         pushed = 0;
         j = 0;
         
-        printf("Iteration %d:\n", i);
-        print_stack2(*a, 'A');
-        print_stack2(b, 'B');
+        //printf("Iteration %d:\n", i);
+        //print_stack2(*a, 'A');
+       // print_stack2(b, 'B');
          size = stack_len(*a);
         // Procesar los elementos en A
         while (j < size)
@@ -190,7 +135,7 @@ void radix_sort(t_node **a)
         int k = 0;
         while (k < b_size)
         {
-            if (i < max_bits - 2)
+            if (i < max_bits - 1) // Si no es la última iteración
             {
                 if (((b->pos >> (i + 1)) & 1) == 1)
                     pa(a, &b, 0); // Mueve a A si el siguiente bit es 1
@@ -209,7 +154,7 @@ void radix_sort(t_node **a)
     while (b)
         pa(a, &b, 0); // Asegurar que B esté vacío al final
 
-    printf("\nFinal Result:\n");
-    print_stack2(*a, 'A');
-    print_stack2(b, 'B');
+    //printf("\nFinal Result:\n");
+   // print_stack2(*a, 'A');
+    //print_stack2(b, 'B');
 }
