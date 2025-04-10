@@ -12,56 +12,6 @@
 
 #include "push_swap.h"
 
-int is_empty(t_node *stack) 
-{
-    return stack == NULL;
-}
-
-int find_max(t_node *stack)
-{
-    if (!stack) 
-        return 0; // Si la pila está vacía, retornamos 0
-
-    int max = stack->value; // Inicializamos con el primer valor de la pila
-    while (stack)
-    {
-        if (stack->value > max)
-            max = stack->value;
-        stack = stack->next;
-    }
-    return max;
-}
-
-int find_min(t_node *b)
-{
-    if (b == NULL)  // Si la pila está vacía, no hay un mínimo.
-        return -1;  // Valor que indica que la pila está vacía.
-
-    int min = b->value;  // Asumimos que el primer elemento es el mínimo.
-    t_node *temp = b->next;  // Empezamos desde el segundo nodo.
-
-    // Recorremos la pila para encontrar el mínimo.
-    while (temp != NULL)
-    {
-        if (temp->value < min)
-        {
-            min = temp->value;  // Actualizamos el mínimo si encontramos un valor menor.
-        }
-        temp = temp->next;  // Avanzamos al siguiente nodo.
-    }
-
-    return min;  // Retornamos el valor mínimo encontrado.
-}
-
-
-// Función para obtener el valor del tope del stack
-int top(t_node *stack) 
-{
-    if (stack == NULL) 
-        return -1;
-    return stack->pos;
-}
-
 void print_stack2(t_node *stack, char name)
 {
     printf("Stack %c: ", name);
@@ -73,6 +23,8 @@ void print_stack2(t_node *stack, char name)
     }
     printf("\n");
 }
+
+
 int is_sorted(t_node *stack)
 {
     while (stack && stack->next)
