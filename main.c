@@ -47,7 +47,8 @@ void	append_node(t_node **stack, int nbr)
 	}
 }
 
-void create_index(t_node *head) {
+void create_index(t_node *head) 
+{
     t_node *pnt;
 	t_node	*cmp;
     int count;
@@ -55,7 +56,7 @@ void create_index(t_node *head) {
     pnt = head;
     while (pnt) 
 	{
-        count = 0;
+        count = 1;
         cmp = head;
         
         while (cmp) 
