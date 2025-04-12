@@ -15,8 +15,8 @@
 int	ft_atol(const char *str)
 {
 	long	num;
-	int	isneg;
-	int	i;
+	int		isneg;
+	int		i;
 
 	num = 0;
 	isneg = 1;
@@ -79,14 +79,12 @@ static char	*ft_strdup(const char *s1)
 	return (dst);
 }
 
-
-
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	s_len;
-	char	*str;
+	size_t			s_len;
+	char			*str;
 	unsigned int	i;
-	
+
 	i = 0;
 	s_len = ft_strlen(s);
 	if (start >= s_len)

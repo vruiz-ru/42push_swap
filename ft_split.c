@@ -84,8 +84,8 @@ char	**ft_split(char const *s, char c)
 	if (matriz)
 	{
 		matriz[i] = malloc(sizeof(char));
-		if(matriz[i] == NULL)
-			return(NULL);
+		if (matriz[i] == NULL)
+			return (NULL);
 		*matriz[i] = '\0';
 		return (ft_split2(s, c, matriz, len));
 	}

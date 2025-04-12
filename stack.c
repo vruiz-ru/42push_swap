@@ -83,7 +83,6 @@ int	error_syntax(char *str_nbr)
 	return (0);
 }
 
-
 int	error_repetition(t_node *a, int nbr)
 {
 	if (NULL == a)
@@ -96,4 +95,3 @@ int	error_repetition(t_node *a, int nbr)
 	}
 	return (0);
 }
-
