@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vruiz-ru <vruiz-ru@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 20:07:25 by vruiz-ru          #+#    #+#             */
 /*   Updated: 2025/04/03 18:55:06 by vruiz-ru         ###   ########.fr       */
@@ -28,7 +28,7 @@ typedef struct s_node
 	struct s_node	*prev;
 }					t_node;
 
-long					ft_atol(const char *str);
+long				ft_atol(const char *str);
 size_t				ft_strlen(const char *s);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				**ft_split(char const *s, char c);
@@ -45,11 +45,11 @@ void				ra(t_node **a, bool checker);
 void				rb(t_node **b, bool checker);
 int					stack_len(t_node *stack);
 void				radix_sort(t_node **a);
-void	sort_three(t_node **a);
-int	is_sorted_a(t_node *stack);
-void	sort_five(t_node **a);
-void	sa(t_node	**a, bool checker);
-void	sb(t_node **b, bool checker);
-void	rra(t_node **a, bool checker);
+void				sort_three(t_node **a);
+int					is_sorted_a(t_node *stack);
+void				sort_five(t_node **a);
+void				sa(t_node **a, bool checker);
+void				sb(t_node **b, bool checker);
+void				rra(t_node **a, bool checker);
 
 #endif

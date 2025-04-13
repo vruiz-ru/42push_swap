@@ -12,9 +12,24 @@
 
 #include "push_swap.h"
 
+int	stack_len(t_node *stack)
+{
+	int	count;
+
+	if (NULL == stack)
+		return (0);
+	count = 0;
+	while (stack)
+	{
+		++count;
+		stack = stack->next;
+	}
+	return (count);
+}
+
 static t_node	*find_highest(t_node *stack)
 {
-	int				highest;
+	int		highest;
 	t_node	*highest_node;
 
 	if (NULL == stack)
@@ -49,35 +64,35 @@ void	push_to_b(t_node **b, t_node **a)
 {
 	int	quantity;
 
-    quantity = stack_len(*a);
+	quantity = stack_len(*a);
 	while (quantity > 3)
 	{
 		if ((*a)->pos == 0 || (*a)->pos == 1)
-        {
-			pb(b, a, 0); 
-            quantity--;
-        }
-        else
-            ra(a, 0);
-   }
-   return;
+		{
+			pb(b, a, 0);
+			quantity--;
+		}
+		else
+			ra(a, 0);
+	}
+	return ;
 }
 
 void	sort_five(t_node **a)
 {
-    t_node	*b;
+	t_node	*b;
 
 	b = NULL;
-    push_to_b(&b, a);
-    sort_three(a);
-    if (stack_len(b) == 2)
-    {
-        if ((b)->pos < (b)->next->pos)
-            sb(&b, 0);
-    }
-    while (stack_len(b) > 0)
-        pa(a, &b, 0);
-    if ((*a)->pos > (*a)->next->pos)
-        sa(a, 0);
-    return;
+	push_to_b(&b, a);
+	sort_three(a);
+	if (stack_len(b) == 2)
+	{
+		if ((b)->pos < (b)->next->pos)
+			sb(&b, 0);
+	}
+	while (stack_len(b) > 0)
+		pa(a, &b, 0);
+	if ((*a)->pos > (*a)->next->pos)
+		sa(a, 0);
+	return ;
 }

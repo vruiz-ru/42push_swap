@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vruiz-ru <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/12 18:22:52 by vruiz-ru          #+#    #+#              #
 #    Updated: 2025/04/12 18:22:58 by vruiz-ru         ###   ########.fr        #
@@ -14,7 +14,9 @@ NAME	= push_swap
 SRCS	= ft_split.c \
 		ft_strings.c \
 		main.c \
-		movements.c \
+		push.c \
+		rotate.c \
+		swap.c \
 		stack.c \
 		radix.c \
 		sort.c \

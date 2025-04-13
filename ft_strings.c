@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strigs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vruiz-ru <vruiz-ru@student.42madrid>       +#+  +:+       +#+        */
+/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 19:13:16 by vruiz-ru          #+#    #+#             */
 /*   Updated: 2024/03/18 21:28:23 by vruiz-ru         ###   ########.fr       */
