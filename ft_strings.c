@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	ft_atol(const char *str)
+long	ft_atol(const char *str)
 {
 	long	num;
 	int		isneg;

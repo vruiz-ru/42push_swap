@@ -28,7 +28,7 @@ typedef struct s_node
 	struct s_node	*prev;
 }					t_node;
 
-int					ft_atol(const char *str);
+long					ft_atol(const char *str);
 size_t				ft_strlen(const char *s);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				**ft_split(char const *s, char c);

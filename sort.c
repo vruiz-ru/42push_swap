@@ -47,16 +47,15 @@ void	sort_three(t_node **a)
 
 void	push_to_b(t_node **b, t_node **a)
 {
-	int	idx;
+	int	quantity;
 
-    idx = stack_len(*a);
-    
-	while (idx > 3)
+    quantity = stack_len(*a);
+	while (quantity > 3)
 	{
 		if ((*a)->pos == 0 || (*a)->pos == 1)
         {
 			pb(b, a, 0); 
-            idx--;
+            quantity--;
         }
         else
             ra(a, 0);
