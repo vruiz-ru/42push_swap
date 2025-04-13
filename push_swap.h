@@ -45,5 +45,11 @@ void				ra(t_node **a, bool checker);
 void				rb(t_node **b, bool checker);
 int					stack_len(t_node *stack);
 void				radix_sort(t_node **a);
+void	sort_three(t_node **a);
+int	is_sorted_a(t_node *stack);
+void	sort_five(t_node **a);
+void	sa(t_node	**a, bool checker);
+void	sb(t_node **b, bool checker);
+void	rra(t_node **a, bool checker);
 
 #endif

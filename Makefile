@@ -17,6 +17,7 @@ SRCS	= ft_split.c \
 		movements.c \
 		stack.c \
 		radix.c \
+		sort.c \
 
 CC = cc
 OBJS	= $(SRCS:.c=.o)

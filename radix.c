@@ -12,42 +12,28 @@
 
 #include "push_swap.h"
 
+/*
 void	print_stack2(t_node *stack, char name)
 {
 	printf("Stack %c: ", name);
 	while (stack)
 	{
-        // printf("%d ", stack->value);
 		printf("%d ", stack->pos);
 		stack = stack->next;
 	}
 	printf("\n");
-}
+}*/
 
 int	is_sorted_a(t_node *stack)
 {
 	while (stack && stack->next)
 	{
 		if (stack->pos > stack->next->pos)
-			return (0); // No está ordenado de menor a mayor
+			return (0); 
 		stack = stack->next;
 	}
-	return (1); // Está ordenado
+	return (1); 
 }
-/*
-int	is_sorted_b(t_node *stack)
-{
-	int	max_num;
-	int	max_bits;
-
-	while (stack && stack->next)
-	{
-		if (stack->pos < stack->next->pos)
-			return (0);  // No está ordenado de mayor a menor
-		stack = stack->next;
-	}
-	return (1);  // Está ordenado
-}*/
 
 int	get_max_bits(t_node *a)
 {
@@ -94,17 +80,17 @@ void	process_stack_b(t_node **a, t_node **b, int bit, int max_bits)
 
 	j = 0;
 	size = stack_len(*b);
-	while (j < size) //&& (is_sorted_a(*a) == 0))
+	while (j < size)
 	{	
 		if (bit < max_bits - 1)
 		{
 			if (((*b)->pos >> (bit + 1)) & 1)
-				pa(a, b, 0);// Siguiente bit es 1 → pasa a A
+				pa(a, b, 0);
 			else
-				rb(b, 0);// Siguiente bit es 0 → rota en B
+				rb(b, 0);
 		}
 		else
-			pa(a, b, 0);// Última pasada → vacía B
+			pa(a, b, 0);
 		j++;
 	}
 	return;
