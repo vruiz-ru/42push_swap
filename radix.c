@@ -53,9 +53,9 @@ void	process_stack_a(t_node **a, t_node **b, int bit)
 		if (is_sorted_a(*a))
 			break ;
 		if (((*a)->pos >> bit) & 1)
-			ra(a, 0);
+			ra(a);
 		else
-			pb(b, a, 0);
+			pb(b, a);
 		i++;
 	}
 	return ;
@@ -73,12 +73,12 @@ void	process_stack_b(t_node **a, t_node **b, int bit, int max_bits)
 		if (bit < max_bits - 1)
 		{
 			if (((*b)->pos >> (bit + 1)) & 1)
-				pa(a, b, 0);
+				pa(a, b);
 			else
-				rb(b, 0);
+				rb(b);
 		}
 		else
-			pa(a, b, 0);
+			pa(a, b);
 		j++;
 	}
 	return ;
@@ -102,6 +102,6 @@ void	radix_sort(t_node **a)
 		bit_index++;
 	}
 	while (b)
-		pa(a, &b, 0);
+		pa(a, &b);
 	return ;
 }

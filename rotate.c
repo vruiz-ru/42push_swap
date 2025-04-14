@@ -28,18 +28,16 @@ static void	rotate(t_node **stack)
 	last_node->next->next = NULL;
 }
 
-void	ra(t_node **a, bool checker)
+void	ra(t_node **a)
 {
 	rotate(a);
-	if (!checker)
-		write(1, "ra\n", 3);
+	write(1, "ra\n", 3);
 }
 
-void	rb(t_node **b, bool checker)
+void	rb(t_node **b)
 {
 	rotate(b);
-	if (!checker)
-		write(1, "rb\n", 3);
+	write(1, "rb\n", 3);
 }
 
 static void	reverse_rotate(t_node **stack)
@@ -58,9 +56,8 @@ static void	reverse_rotate(t_node **stack)
 	last->next->prev = last;
 }
 
-void	rra(t_node **a, bool checker)
+void	rra(t_node **a)
 {
 	reverse_rotate(a);
-	if (!checker)
-		write(1, "rra\n", 4);
+	write(1, "rra\n", 4);
 }

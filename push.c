@@ -36,16 +36,14 @@ static void	push(t_node **dest, t_node **src)
 	}
 }
 
-void	pa(t_node **a, t_node **b, bool checker)
+void	pa(t_node **a, t_node **b)
 {
 	push(a, b);
-	if (!checker)
-		write(1, "pa\n", 3);
+	write(1, "pa\n", 3);
 }
 
-void	pb(t_node **b, t_node **a, bool checker)
+void	pb(t_node **b, t_node **a)
 {
 	push(b, a);
-	if (!checker)
-		write(1, "pb\n", 3);
+	write(1, "pb\n", 3);
 }

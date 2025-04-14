@@ -53,11 +53,11 @@ void	sort_three(t_node **a)
 
 	highest_node = find_highest(*a);
 	if (*a == highest_node)
-		ra(a, false);
+		ra(a);
 	else if ((*a)->next == highest_node)
-		rra(a, false);
+		rra(a);
 	if ((*a)->pos > (*a)->next->pos)
-		sa(a, false);
+		sa(a);
 }
 
 void	push_to_b(t_node **b, t_node **a)
@@ -69,11 +69,11 @@ void	push_to_b(t_node **b, t_node **a)
 	{
 		if ((*a)->pos == 0 || (*a)->pos == 1)
 		{
-			pb(b, a, 0);
+			pb(b, a);
 			quantity--;
 		}
 		else
-			ra(a, 0);
+			ra(a);
 	}
 	return ;
 }
@@ -88,11 +88,11 @@ void	sort_five(t_node **a)
 	if (stack_len(b) == 2)
 	{
 		if ((b)->pos < (b)->next->pos)
-			sb(&b, 0);
+			sb(&b);
 	}
 	while (stack_len(b) > 0)
-		pa(a, &b, 0);
+		pa(a, &b);
 	if ((*a)->pos > (*a)->next->pos)
-		sa(a, 0);
+		sa(a);
 	return ;
 }

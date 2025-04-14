@@ -12,13 +12,13 @@
 
 #include "push_swap.h"
 
-t_node	*find_last_node(t_node *head)
+t_node	*find_last_node(t_node *node)
 {
-	if (NULL == head)
+	if (NULL == node)
 		return (NULL);
-	while (head->next)
-		head = head->next;
-	return (head);
+	while (node->next)
+		node = node->next;
+	return (node);
 }
 
 void	append_node(t_node **stack, int nbr)
@@ -26,14 +26,14 @@ void	append_node(t_node **stack, int nbr)
 	t_node	*node;
 	t_node	*last_node;
 
-	if (NULL == stack)
+	if (stack == NULL)
 		return ;
 	node = malloc(sizeof(t_node));
-	if (NULL == node)
+	if (node == NULL)
 		return ;
 	node->next = NULL;
 	node->value = nbr;
-	if (NULL == *stack)
+	if (*stack == NULL)
 	{
 		*stack = node;
 		node->prev = NULL;
@@ -68,26 +68,26 @@ void	create_index(t_node *head)
 	}
 }
 
-void	stack_init(t_node **a, char **argv, bool flag_argc_2)
+void	stack_init(t_node **a, char **av, bool flag_ac)
 {
 	long	nbr;
 	int		i;
 
 	i = 0;
-	while (argv[i])
+	while (av[i])
 	{
-		if (error_syntax(argv[i]))
-			error_free(a, argv, flag_argc_2);
-		nbr = ft_atol(argv[i]);
+		if (error_syntax(av[i]))
+			error_free(a, av, flag_ac);
+		nbr = ft_atol(av[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN)
-			error_free(a, argv, flag_argc_2);
+			error_free(a, av, flag_ac);
 		if (error_repetition(*a, (int)nbr))
-			error_free(a, argv, flag_argc_2);
+			error_free(a, av, flag_ac);
 		append_node(a, (int)nbr);
 		++i;
 	}
-	if (flag_argc_2)
-		free_matrix(argv);
+	if (flag_ac)
+		free_matrix(av);
 }
 
 int	main(int ac, char **av)
@@ -104,7 +104,7 @@ int	main(int ac, char **av)
 	if (!is_sorted_a(a))
 	{
 		if (stack_len(a) == 2)
-			sa(&a, false);
+			sa(&a);
 		else if (stack_len(a) == 3)
 			sort_three(&a);
 		else if (stack_len(a) <= 5)

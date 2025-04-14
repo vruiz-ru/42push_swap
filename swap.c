@@ -17,7 +17,7 @@ static void	swap(t_node **head)
 	int	len;
 
 	len = stack_len(*head);
-	if (NULL == *head || NULL == head || 1 == len)
+	if (NULL == *head || NULL == head || len == 1)
 		return ;
 	*head = (*head)->next;
 	(*head)->prev->prev = *head;
@@ -28,16 +28,14 @@ static void	swap(t_node **head)
 	(*head)->prev = NULL;
 }
 
-void	sa(t_node	**a, bool checker)
+void	sa(t_node	**a)
 {
 	swap(a);
-	if (!checker)
-		write(1, "sa\n", 3);
+	write(1, "sa\n", 3);
 }
 
-void	sb(t_node **b, bool checker)
+void	sb(t_node **b)
 {
 	swap(b);
-	if (!checker)
-		write(1, "sb\n", 3);
+	write(1, "sb\n", 3);
 }

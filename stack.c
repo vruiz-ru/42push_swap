@@ -12,16 +12,16 @@
 
 #include "push_swap.h"
 
-void	free_matrix(char **argv)
+void	free_matrix(char **av)
 {
 	int	i;
 
 	i = -1;
-	if (NULL == argv || NULL == *argv)
+	if (NULL == av || NULL == *av)
 		return ;
-	while (argv[i])
-		free(argv[i++]);
-	free(argv - 1);
+	while (av[i])
+		free(av[i++]);
+	free(av - 1);
 }
 
 void	free_stack(t_node **stack)
@@ -41,11 +41,11 @@ void	free_stack(t_node **stack)
 	*stack = NULL;
 }
 
-void	error_free(t_node **a, char **argv, bool flag_argc_2)
+void	error_free(t_node **a, char **av, bool flag_ac)
 {
 	free_stack(a);
-	if (flag_argc_2)
-		free_matrix(argv);
+	if (flag_ac)
+		free_matrix(av);
 	write(2, "Error\n", 6);
 	exit(1);
 }
